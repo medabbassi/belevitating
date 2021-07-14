@@ -1,11 +1,5 @@
-import 'dart:async';
-import 'dart:convert';
 import 'package:belevitating/screens/character_list.dart';
-import 'package:flutter/foundation.dart';
-import 'package:belevitating/data/quote_api.dart';
-import 'module/qoute.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 void main() {
  runApp(MyApp());
