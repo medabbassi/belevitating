@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   return MaterialApp(
    debugShowCheckedModeBanner: false,
    title: "B-elevetating",
-   theme: ThemeData(primarySwatch: Colors.red),
+   theme: ThemeData(primarySwatch: Colors.blueGrey),
    home: CharacterList(),
   );
  }
