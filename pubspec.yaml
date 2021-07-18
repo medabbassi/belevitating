@@ -32,7 +32,8 @@ dependencies:
   google_fonts: ^2.1.0
   font_awesome_flutter:
   share: ^2.0.4
-
+  hexcolor: ^2.0.4
+  badges: ^2.0.1
 
 
 dev_dependencies:

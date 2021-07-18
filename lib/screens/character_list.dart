@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:badges/badges.dart';
 import 'package:belevitating/module/qoute.dart';
 import 'package:flutter/material.dart';
 import 'package:belevitating/data/quote_api.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:share/share.dart';
 
 class CharacterList extends StatefulWidget {
@@ -50,7 +52,7 @@ class _CharacterListState extends State<CharacterList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.white,
         body: Stack(
           children: <Widget>[
             Container(
@@ -66,7 +68,7 @@ class _CharacterListState extends State<CharacterList> {
                     children: [
                       topBar(),
                       SizedBox(height: 10.0),
-                      characterList.length>0 ?
+                      //characterList.length>0 ?
                       Expanded(
                           child:ListView.builder(
                           padding: EdgeInsets.all(5.0),
@@ -75,6 +77,10 @@ class _CharacterListState extends State<CharacterList> {
                             return SizedBox(
                               height: 550,
                               child: Card(
+                                color: index %2 ==0 ? HexColor("#370FE6") : HexColor("#E80F48")  ,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)
+                                ),
                                 borderOnForeground: true,
                                 child: Container(
                                   padding: EdgeInsets.all(10),
@@ -98,19 +104,13 @@ class _CharacterListState extends State<CharacterList> {
                                           style: GoogleFonts.robotoCondensed(
                                               fontSize: 50,
                                               fontStyle: FontStyle.italic,
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.w600,color: Colors.white)),
 
-                                      /*Text(characterList[index].text,
-                            softWrap: true,
-                            textAlign: TextAlign.center,
-                            style:GoogleFonts.robotoCondensed(fontSize: 50,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.bold)),*/
                                       SizedBox(
                                         height: 10,
                                       ),
                                       Text(characterList[index].author ?? "NaN",
-                                      style: GoogleFonts.roboto(fontWeight: FontWeight.w700),),
+                                      style: GoogleFonts.roboto(fontWeight: FontWeight.w700,color: Colors.white),),
                                       SafeArea(
                                           child: Padding(
                                               padding: const EdgeInsets.symmetric(
@@ -130,7 +130,8 @@ class _CharacterListState extends State<CharacterList> {
                               ),
                             );
                           })
-                      ) :Container()
+                      )
+                      //:Container()
 
                     ],
 
@@ -147,14 +148,25 @@ class _CharacterListState extends State<CharacterList> {
         builder: (BuildContext context){
           return IconButton(
               onPressed: ()=>{},
-              icon: Icon(Icons.menu, color:Colors.white,size: 40,));
+              icon: Icon(Icons.menu, color:HexColor("#49495E"),size: 40,));
         },
       ),
       title: Text('All Quotes',style: GoogleFonts.raleway(
           fontSize: 32,
-          color: Colors.white,
+          color: HexColor("#49495E"),
           fontWeight: FontWeight.w800),
           ),
+      actions:<Widget> [
+        Badge(
+          badgeContent: Text(characterList.length.toString()),
+          toAnimate: true,
+          position: BadgePosition.topEnd(top: 0,end: 0),
+          child: IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: (){},
+          ),
+        )
+      ],
       backgroundColor: Colors.transparent,
       elevation: 0.0,
     );
