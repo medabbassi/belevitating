@@ -107,7 +107,7 @@ class _CharacterListState extends State<CharacterList> {
                                               fontWeight: FontWeight.w600,color: Colors.white)),
 
                                       SizedBox(
-                                        height: 10,
+                                        height: 11,
                                       ),
                                       Text(characterList[index].author ?? "NaN",
                                       style: GoogleFonts.roboto(fontWeight: FontWeight.w700,color: Colors.white),),
